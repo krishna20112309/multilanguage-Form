@@ -1,0 +1,35 @@
+{
+    "Title1":" Partner Sign In",
+    "Title2":"Partner Registration",
+    "Title3":"RenewBuy",
+    "myblog":"My Blog",
+    
+    "myblog1":"Welcome to the blog of unknown",
+    "myblog2":"Welcome to the blog of unknown",
+    "Username" :"Username",
+    "Useremail" :"Email",
+    "Userpassword" :"Password",
+    "Usermobile" :"Mobile Number",
+    "usercontry" :"Country",
+    "userdesignation" :"Choose Designation",
+
+
+   
+    "Error 1":"Please enter username",
+    "Error 2":"Email address is required",
+    "Error 2a":"Email address is invalid",
+    "Error 3":"Password is required",
+    "Error 3a":"The password length must be greater than or equal to 8",
+    "Error 3b":"The password must contain one or more uppercase characters",
+    "Error 3c":"The password must contain one or more lowercase characters",
+    "Error 3d":"The password must contain one or more numeric values",
+    "Error 3e":"The password must contain one or more special characters" ,
+    "Error 4":"Mobile number is required",
+    "Error 4a":"10 Digit Mobile number required",
+    "Error 5":"Please Enter Country",
+    "Error 6":"Please Select userdesignation",
+
+    "Login":"Login",
+    "Submit":"Submit",
+    "Reset":"Reset"
+  }

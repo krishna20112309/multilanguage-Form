@@ -1,0 +1,110 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>{{'Title1' | translate}}</mat-card-title>
+      </mat-card-header>
+  
+      <form
+        class="form-horizontal"
+        role="form"
+        #f="ngForm"
+        (ngSubmit)="f.form.valid && onformlogin()"
+      >
+        <mat-card-content>
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="usermodel.username"
+              [ngClass]="{
+                'invalid-data': username.invalid && f.touched,
+                'valid-data': username.valid && f.submitted
+              }"
+              name="username"
+              #username="ngModel"
+              placeholder="{{'Username' | translate}}"
+              class="form-control"
+              required
+            />
+  
+            <mat-error
+              *ngIf="
+                (username.invalid && f.touched) ||
+                (username.invalid && f.submitted)
+              "
+            >
+              <span style="color: red">{{'Error 1' | translate}}</span>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input
+              type="password"
+              name="password"
+              class="form-control"
+              matInput
+              placeholder="{{'Userpassword' | translate}}"
+              [(ngModel)]="usermodel.userpassword"
+              #userpassword="ngModel"
+              [ngClass]="{
+                'invalid-data': userpassword.invalid && userpassword.touched,
+                'valid-data': userpassword.valid && f.submitted
+              }"
+              pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+              required
+            />
+  
+            <mat-error
+              *ngIf="
+                (userpassword.invalid && userpassword.touched) ||
+                userpassword.dirty ||
+                (userpassword.invalid && f.submitted)
+              "
+            >
+              <div
+                style="color: red"
+                class="text-danger"
+                *ngIf="userpassword.errors?.['required']"
+              >{{'Error 3' | translate}}
+               
+              </div>
+              <div
+                style="color: red"
+                class="text-danger"
+                *ngIf="userpassword.errors?.['pattern']"
+              >
+                <p>{{'Error 3a' | translate}}</p>
+                <p>{{'Error 3b' | translate}}</p>
+                <p>{{'Error 3c' | translate}}</p>
+                <p>{{'Error 3d' | translate}}</p>
+                <p>{{'Error 3e' | translate}}</p>
+                <p></p>
+              </div>
+            </mat-error>
+          </mat-form-field>
+        </mat-card-content>
+        <button
+          type="submit"
+          mat-stroked-button
+          color="accent"
+          class="btn-block"
+          class="btn btn-primary"
+          style="margin: 4px"
+          routerLink="/home"
+        >
+        {{'Login' | translate}}
+        </button>
+        <button
+          type="reset"
+          mat-stroked-button
+          color="accent"
+          class="btn-block"
+          class="btn btn-default"
+        >
+        {{'Reset' | translate}}
+        </button>
+      </form>
+    </mat-card>
+  </div>
+  <button routerLink="/home">home</button>
+  

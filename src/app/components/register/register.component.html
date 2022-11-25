@@ -1,0 +1,158 @@
+<div class="main-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+      <mat-card-header>
+        <mat-card-title>{{'Title2' | translate}} </mat-card-title>
+      </mat-card-header>
+  
+    <form class="form-horizontal" role="form" #f="ngForm" (ngSubmit)="f.form.valid && onformsubmit()"  >
+        
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="usermodel.username"
+              [ngClass]="{'invalid-data': username.invalid && f.touched,
+                          'valid-data': username.valid && f.submitted }"
+              name="username"
+              #username="ngModel"
+              placeholder="{{'Username' | translate}}"
+              class="form-control" required />
+  
+            <mat-error *ngIf="(username.invalid && f.touched) || (username.invalid && f.submitted)">
+              <span style="color: red">{{'Error 1' | translate}}</span>
+            </mat-error>
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input matInput type="email" name="email" placeholder="{{'Useremail' | translate}}"
+            [(ngModel)]="usermodel.useremail"
+            [ngClass]="{'invalid-data': useremail.invalid && f.touched,
+                        'valid-data': useremail.valid && f.submitted }"
+            #useremail="ngModel"
+            class="form-control"  pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+             required    />
+  
+             <mat-error *ngIf="(useremail.invalid && f.touched) || (useremail.invalid && f.submitted) || useremail.dirty">
+              <span style="color: red;" class="text-danger" 
+              *ngIf="useremail.errors?.['required']">{{'Error 2' | translate}}</span>
+              <span style="color: red;" class="text-danger" 
+              *ngIf="useremail.errors?.['pattern']">{{'Error 2a' | translate}}</span>
+            </mat-error>
+            </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <input type="password" name="password" class="form-control"  matInput 
+            placeholder="{{'Userpassword' | translate}}"
+                [(ngModel)]="usermodel.userpassword" #userpassword="ngModel" 
+               
+                [ngClass]="{'invalid-data': userpassword.invalid && userpassword.touched ,
+                 'valid-data': userpassword.valid && f.submitted}"      
+                 pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+                required>
+  
+                <mat-error *ngIf="(userpassword.invalid && userpassword.touched) 
+                || userpassword.dirty || (userpassword.invalid && f.submitted)">
+                  <div style="color: red;" class="text-danger"
+                           *ngIf="userpassword.errors?.['required']">{{'Error 3' | translate}}</div>
+                  <div style="color: red;" class="text-danger"
+                           *ngIf="userpassword.errors?.['pattern']"> 
+                    <p>{{'Error 3a' | translate}}</p>
+                    <p>{{'Error 3b' | translate}}</p>
+                    <p>{{'Error 3c' | translate}}</p>
+                    <p>{{'Error 3d' | translate}}</p>
+                    <p>{{'Error 3e' | translate}}</p>
+                    <p>
+                    </div>           
+                </mat-error>
+          </mat-form-field>
+  
+  
+  
+  
+  
+          <mat-form-field class="example-full-width">
+            <input type="text" name="mobileNumber" class="form-control"  matInput 
+            placeholder="{{'Usermobile' | translate}}"
+       [ngModel]="usermodel.usermobile"
+            [ngClass]="{'invalid-data': usermobile.invalid && usermobile.touched ,
+             'valid-data': usermobile.valid && f.submitted}"
+             pattern="^((\\+91-?)|0)?[0-9]{10}$" #usermobile="ngModel" required>  
+  
+             <mat-error *ngIf="(usermobile.invalid && usermobile.touched) 
+             || usermobile.dirty || (usermobile.invalid && f.submitted)">
+              <span style="color: red;" class="text-danger" 
+              *ngIf="usermobile.errors?.['required']">{{'Error 4' | translate}}</span>
+              <span style="color: red;" class="text-danger"
+               *ngIf="usermobile.errors?.['pattern']">{{'Error 4a' | translate}}</span>
+            </mat-error>
+          </mat-form-field>
+  
+  
+  
+  
+  
+          <mat-form-field class="example-full-width">
+            <input
+              matInput
+              type="text"
+              [(ngModel)]="usermodel.usercontry"
+              [ngClass]="{'invalid-data': usercontry.invalid && f.touched,
+                          'valid-data': usercontry.valid && f.submitted }"
+              name="usercontry"
+              #usercontry="ngModel"
+              placeholder="{{'usercontry' | translate}}"
+              class="form-control" required />
+  
+            <mat-error *ngIf="(usercontry.invalid && f.touched) || (usercontry.invalid && f.submitted)">
+              <span style="color: red">{{'Error 5' | translate}}</span>
+            </mat-error>
+  
+          </mat-form-field>
+  
+          <mat-form-field class="example-full-width">
+            <mat-label>{{'Title2' | translate}}</mat-label>
+            <mat-select class="form-class" name="designation" [(ngModel)] = "usermodel.userdesignation" 
+            #userdesignation="ngModel"
+            [ngClass]="{'invalid-data': userdesignation.invalid && f.touched,
+                        'valid-data': userdesignation.valid && f.submitted }" required
+            >
+              <mat-option [value]="user" *ngFor="let user of User"
+                >{{ user }}
+              </mat-option>
+            </mat-select>
+  
+            <mat-error *ngIf="(userdesignation.invalid && f.touched) || (userdesignation.invalid && f.submitted)">
+              <span style="color: red">{{'Error 6' | translate}}</span>
+            </mat-error>
+  
+          </mat-form-field>
+        <!-- </mat-card-content> -->
+        <a mat-button routerLink="/signin" ></a>
+        <button
+          type="submit"
+          mat-stroked-button
+          color="accent"
+          class="btn-block"
+          class="btn btn-primary"
+          style="margin: 15px"
+          routerLink="/signin"
+          
+        >
+        {{'Submit' | translate}}
+        </button>
+        
+        <button
+          type="reset"
+          mat-stroked-button
+          color="accent"
+          class="btn-block"
+          class="btn btn-default"
+         
+        >
+        {{'Reset' | translate}}
+        </button>
+      </form>
+    </mat-card>
+  </div>
+  <button routerLink="/home">home</button>
+  
